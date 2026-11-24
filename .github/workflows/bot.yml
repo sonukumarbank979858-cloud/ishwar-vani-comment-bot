@@ -1,6 +1,6 @@
 name: yt-comment-bot
 on:
-
+  schedule: [{cron: "*/30 * * * *"}]
   workflow_dispatch:
 permissions: {contents: write}
 concurrency: {group: bot, cancel-in-progress: false}
