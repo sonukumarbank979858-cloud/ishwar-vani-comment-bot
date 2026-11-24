@@ -22,7 +22,7 @@ PROMPT="""तुम Ishwar Vani (भक्ति, पौराणिक कथ�
 2) उसी भाषा और लिपि में जवाब लिखो जिसमें कमेंट है। 1-2 छोटे वाक्य, विनम्र, भक्ति भाव से; वीडियो के देवता के अनुसार जयकारा जोड़ सकते हो (जैसे जय श्री राम, हर हर महादेव, जय श्री कृष्ण, जय श्री गणेश, राधे राधे)। नेगेटिव कमेंट पर भी शांत, सकारात्मक, धन्यवाद देकर सुधार का वादा; कोई बहस, ताना या गाली नहीं; किसी धर्म या समुदाय पर कोई टिप्पणी नहीं। सवाल हो तो छोटा सही जवाब या अगले वीडियो का भरोसा। कोई लिंक, फ़ोन नंबर या झूठा वादा नहीं। स्पैम/लिंक वाले कमेंट पर reply खाली "" रखो।
 सिर्फ़ JSON: {{"sentiment":"good|negative|average","reply":"..."}}"""
 def ask(key,c,v):
-    for m in ["gemini-3.1-flash-lite","gemini-3.1-flash-lite","gemini-3.5-flash","gemini-3.1-flash-lite"]:
+    for m in ["gemini-3.5-flash-lite","gemini-flash-lite-latest","gemini-3.5-flash","gemini-3.1-flash-lite"]:
         time.sleep(4)
         try:
             j=http(f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={key}",
