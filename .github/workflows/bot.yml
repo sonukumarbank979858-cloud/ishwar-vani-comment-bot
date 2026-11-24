@@ -20,7 +20,7 @@ jobs:
           end=$((SECONDS+19800))
           while [ $SECONDS -lt $end ]; do
             git pull -q --rebase || true
-            python3 bot.py || echo "run failed"
+            python3 -u bot.py || echo "run failed"
             git add docs/comments.json
             git commit -qm "update" && (git push -q || (git pull -q --rebase && git push -q)) || true
             sleep 120
