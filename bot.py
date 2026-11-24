@@ -34,7 +34,10 @@ def ask(key,c,v):
 def main():
     st=json.load(open(STATE)) if os.path.exists(STATE) else {"items":[]}
     seen={i["id"] for i in st["items"]}
-    at=token(); H={"Authorization":"Bearer "+at}; key=gemini_key()
+    at=token(); H={"Authorization":"Bearer "+at}
+    me=http("https://www.googleapis.com/youtube/v3/channels?part=id&mine=true",headers=H).get("items",[])
+    if not me or me[0]["id"]!=CH: print("WRONG CHANNEL",[m["id"] for m in me]); return
+    print("channel ok"); key=gemini_key()
     q=urllib.parse.urlencode({"part":"snippet,replies","allThreadsRelatedToChannelId":CH,"maxResults":50,"order":"time","textFormat":"plainText"})
     th=http("https://www.googleapis.com/youtube/v3/commentThreads?"+q,headers=H).get("items",[])
     vids={}; n=0; new=[]
